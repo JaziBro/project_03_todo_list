@@ -1,23 +1,21 @@
 #! usr/bin/env node
 import inquirer from "inquirer"
-
-let todos: string[] = []
+let todos: string[] 
 let loop: boolean = true
 
- async function startLoop (){
-    while (loop) {
-       await displayMenuItems() 
+async function startLoop(){
+    while(loop) {
+        await displayMenuItem()
     }
 }
 startLoop()
-
-async function displayMenuItems() {
+async function displayMenuItem(){
    let answer1 = await inquirer.prompt ([
         {
-            type: "input",
+            type: "list",
             name: "MenuOpt",
             choices: ["AddTodoItem", "DeleteTodoItem", "Exit"],
-            message: "Please select your menu item"
+            message: "Please select your menu item: "
         }
 ]);
 switch(answer1.MenuOpt){
@@ -38,6 +36,7 @@ switch(answer1.MenuOpt){
     }
 }
 }
+
 
 async function addTodo(){
     let answer2 = await inquirer.prompt([

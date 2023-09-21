@@ -11,7 +11,7 @@ startLoop();
 async function displayMenuItems() {
     let answer1 = await inquirer.prompt([
         {
-            type: "input",
+            type: "string",
             name: "MenuOpt",
             choices: ["AddTodoItem", "DeleteTodoItem", "Exit"],
             message: "Please select your menu item"
