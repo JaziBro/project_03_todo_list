@@ -1,7 +1,7 @@
 #! usr/bin/env node
 import inquirer from "inquirer"
 
-let todos: [] = []
+let todos: string[] = []
 let loop: boolean = true
 
  async function startLoop (){
@@ -51,3 +51,12 @@ async function addTodo(){
     console.log(todos)
 }
 
+async function deleteTodo(){
+    if (todos.length > 0){
+        let answers3 = await inquirer.prompt([
+            {
+                
+            }
+        ])
+    }
+}

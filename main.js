@@ -46,3 +46,10 @@ async function addTodo() {
     todos.push(answer2.Todo);
     console.log(todos);
 }
+async function deleteTodo() {
+    if (todos.length > 0) {
+        let answers3 = await inquirer.prompt([
+            {}
+        ]);
+    }
+}
