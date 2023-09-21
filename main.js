@@ -22,6 +22,7 @@ async function displayMenuItems() {
     ]);
     switch (answers1.menuOpt) {
         case `AddTodoItem`: {
+            await addTodo();
             break;
         }
         case `DeleteTodoItem`: {
