@@ -1,11 +1,16 @@
 #! usr/bin/env node
 import inquirer from "inquirer"
 
+interface ansType {
+    menuOpt: string,
+    todo: string
+}
+
 let todos: [] = []
 let loop: boolean = true
-let ans1: any
-let ans2: string 
-let ans3: string 
+let answers1: ansType
+let answers2: ansType
+let answers3: ansType
 
  async function startLoop (){
     while (loop) {
@@ -15,7 +20,7 @@ let ans3: string
 startLoop()
 
 async function displayMenuItems() {
-    ans1 = await inquirer.prompt ([
+    answers1 = await inquirer.prompt ([
         {
             type: "input",
             name: "MenuOpt",
@@ -23,7 +28,7 @@ async function displayMenuItems() {
             message: "Please select your menu item"
         }
 ]);
-switch(ans1.MenuOpt){
+switch(answers1.menuOpt){
     case `AddTodoItem`: {
         break
     } 
@@ -42,12 +47,14 @@ switch(ans1.MenuOpt){
 }
 
 async function addTodo(){
-    ans2 = await inquirer.prompt([
+    answers2 = await inquirer.prompt([
         {
             type: "input",
-            name: "todo",
+            name: "Todo",
             message: "Enter What To Do"
         }
     ])
+    todos.push(answers2.todo)
+    console.log(todos)
 }
 

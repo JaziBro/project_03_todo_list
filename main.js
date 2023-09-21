@@ -2,9 +2,9 @@
 import inquirer from "inquirer";
 let todos = [];
 let loop = true;
-let ans1;
-let ans2;
-let ans3;
+let answers1;
+let answers2;
+let answers3;
 async function startLoop() {
     while (loop) {
         await displayMenuItems();
@@ -12,7 +12,7 @@ async function startLoop() {
 }
 startLoop();
 async function displayMenuItems() {
-    ans1 = await inquirer.prompt([
+    answers1 = await inquirer.prompt([
         {
             type: "input",
             name: "MenuOpt",
@@ -20,7 +20,7 @@ async function displayMenuItems() {
             message: "Please select your menu item"
         }
     ]);
-    switch (ans1.MenuOpt) {
+    switch (answers1.menuOpt) {
         case `AddTodoItem`: {
             break;
         }
@@ -38,11 +38,13 @@ async function displayMenuItems() {
     }
 }
 async function addTodo() {
-    ans2 = await inquirer.prompt([
+    answers2 = await inquirer.prompt([
         {
             type: "input",
-            name: "todo",
+            name: "Todo",
             message: "Enter What To Do"
         }
     ]);
+    todos.push(answers2.todo);
+    console.log(todos);
 }
