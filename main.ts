@@ -55,8 +55,20 @@ async function deleteTodo(){
     if (todos.length > 0){
         let answers3 = await inquirer.prompt([
             {
-                
+                type: "list",
+                name: "MenuOpT",
+                choices: todos,
+                message: `Please Select Todo You Want To Delete`
             }
         ])
-    }
+        let i = 0
+        do{
+            if(todos[i] === answers3.MenuOpT){
+                todos.splice(i, 1)
+                break
+            }
+            i++
+        }while (i < todos.length)
+        console.log(todos)
+    }else {console.log(`No Todo Item To Delete`)}
 }
