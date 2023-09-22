@@ -1,22 +1,38 @@
 import inquirer from "inquirer"
+
 let todos: string[] = []
+let answers: {
+    todo: string
+}
+let loop = true
+
+while(loop){
 let answers = await inquirer.prompt([
     {
-        type: "list",
-        name: "menuopt",
-        choices: ["Addtask","Deletetask","Exit"],
-        message: "Please Select Your Menu Item"
-
-    },
-    {
-        type: "input",
         name: "todo",
+        type: "string",
         message: "Enter What To Do"
     },
     {
-        type: "list",
-        name: "menuopT",
-        message: `Please Select Todo You Want To Delete`
+        name: "addmore",
+        type: "confirm",
+        message: "do you want to add more tasks? ",
+        default: false
     }
-
 ])
+
+const {todo, addmore} = answers
+loop = addmore
+
+if (todo){
+   todos.push(todo)
+}
+}
+console.log (todos)
+
+if (todos.length > 0){
+    console.log("Here is your todo list: ")
+    todos.forEach(todo => {
+        console.log(todo)
+    })
+}
